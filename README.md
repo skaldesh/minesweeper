@@ -11,8 +11,8 @@ This is a toy project that I created to get my hands dirty with *Gio*.
 The redux pattern is poorly implemented and misses almost everything from the official spec.  
 
 ## Install & Run
-`go install github.com/skaldesh/minesweeper@latest`
-`minesweeper`
+- `go install github.com/skaldesh/minesweeper@latest`  
+- `minesweeper`
 
 ## TODO
 - Add inputs to change grid size, #seconds and #mines.
