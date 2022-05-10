@@ -40,8 +40,8 @@ func NewGrid(th *material.Theme) *Grid {
 }
 
 func (g *Grid) Layout(gtx C) D {
-	if !state.Running {
-		// Disable events if game is not running.
+	if state.Finished {
+		// Disable events if game is finished.
 		gtx = gtx.Disabled()
 	}
 

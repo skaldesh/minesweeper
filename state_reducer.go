@@ -13,8 +13,6 @@ func reducer(a Action) {
 	copy(s.Cells, state.Cells)
 
 	switch a.Type {
-	case startGame:
-		s = startGameReducer(s)
 	case clickedCell:
 		s = clickedCellReducer(s, a.Data.(clickedCellData))
 	case resetGame:
@@ -29,21 +27,16 @@ func reducer(a Action) {
 	state = s
 }
 
-func startGameReducer(s State) State {
-	if s.Running || s.Finished {
+func clickedCellReducer(s State, data clickedCellData) State {
+	// Do nothing, if game is finished.
+	if s.Finished {
 		return s
 	}
 
-	s.Running = true
-
-	atomic.StoreUint32(s.timerActive, 1)
-	return s
-}
-
-func clickedCellReducer(s State, data clickedCellData) State {
-	// Do nothing, if game is not running.
-	if !s.Running || s.Finished {
-		return s
+	// If game is not yet running, start it.
+	if !s.Running {
+		s.Running = true
+		atomic.StoreUint32(s.timerActive, 1)
 	}
 
 	cell := s.Cells[data.idx]

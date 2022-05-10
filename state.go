@@ -6,7 +6,7 @@ import (
 )
 
 const (
-	defaultMines       = 20
+	defaultMines       = 40
 	defaultSecondsLeft = 180
 	defaultGridRows    = 20
 	defaultGridCols    = 15
@@ -64,8 +64,7 @@ func dispatch(a Action) {
 type ActionType int
 
 const (
-	startGame ActionType = iota
-	clickedCell
+	clickedCell ActionType = iota
 	resetGame
 	decrementTimer
 )
@@ -73,10 +72,6 @@ const (
 type Action struct {
 	Type ActionType
 	Data interface{}
-}
-
-func StartGame() {
-	dispatch(Action{Type: startGame})
 }
 
 type clickedCellData struct {

@@ -35,11 +35,7 @@ func NewBar(th *material.Theme) *Bar {
 func (b *Bar) Layout(gtx C) D {
 	// Handle events.
 	if b.restart.Clicked() {
-		if state.Running || state.Finished {
-			ResetGame()
-		} else {
-			StartGame()
-		}
+		ResetGame()
 	}
 
 	return layout.Stack{Alignment: layout.Center}.Layout(gtx,
@@ -91,12 +87,7 @@ func (b *Bar) Layout(gtx C) D {
 				}),
 				layout.Rigid(func(gtx C) D {
 					return layout.Center.Layout(gtx, func(gtx C) D {
-						t := "Start"
-						if state.Running || state.Finished {
-							t = "Reset"
-						}
-
-						return material.Button(b.th, &b.restart, t).Layout(gtx)
+						return material.Button(b.th, &b.restart, "Reset").Layout(gtx)
 					})
 				}),
 				layout.Flexed(1, func(gtx C) D {
