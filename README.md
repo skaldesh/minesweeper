@@ -5,11 +5,14 @@ Technology used:
 - [Gio](https://gioui.org/)
 - [Redux](https://redux.js.org/)
 
+![Game Screenshot](img/game-screenshot.png?raw=true "Game Screenshot")
+
 This is a toy project that I created to get my hands dirty with *Gio*.  
 The redux pattern is poorly implemented and misses almost everything from the official spec.  
 
-## Install
-`go install github.com/skaldesh/minesweeper`
+## Install & Run
+`go install github.com/skaldesh/minesweeper@latest`
+`minesweeper`
 
 ## TODO
 - Add inputs to change grid size, #seconds and #mines.

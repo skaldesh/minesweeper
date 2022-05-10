@@ -1,4 +1,4 @@
-module skaldesh/minesweeper
+module github.com/skaldesh/minesweeper
 
 go 1.18
 
