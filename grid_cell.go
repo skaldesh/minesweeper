@@ -12,7 +12,6 @@ import (
 	"gioui.org/op/clip"
 	"gioui.org/op/paint"
 	"gioui.org/text"
-	"gioui.org/widget"
 	"gioui.org/widget/material"
 )
 
@@ -37,9 +36,9 @@ var (
 type GridCell struct {
 	th *material.Theme
 
-	button widget.Clickable
-
 	idx int
+
+	hovered bool
 }
 
 func NewGridCell(th *material.Theme, idx int) *GridCell {
@@ -56,6 +55,10 @@ func (c *GridCell) Layout(gtx C) D {
 			switch e.Type {
 			case pointer.Press:
 				ClickedCell(c.idx, e.Buttons.Contain(pointer.ButtonSecondary))
+			case pointer.Enter:
+				c.hovered = true
+			case pointer.Leave:
+				c.hovered = false
 			}
 		}
 	}
@@ -82,7 +85,7 @@ func (c *GridCell) draw(gtx C) layout.Dimensions {
 			// Define input area.
 			pointer.InputOp{
 				Tag:   c,
-				Types: pointer.Press,
+				Types: pointer.Press | pointer.Enter | pointer.Leave,
 			}.Add(gtx.Ops)
 
 			// Define color.
@@ -94,7 +97,11 @@ func (c *GridCell) draw(gtx C) layout.Dimensions {
 
 			// Draw inner area to distinct between hidden state.
 			if !cellState.IsRevealed {
-				const inset = 2
+				inset := 2
+				if c.hovered {
+					inset = 3
+				}
+
 				min := image.Pt(inset, inset)
 				max.X -= inset
 				max.Y -= inset

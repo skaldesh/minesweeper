@@ -11,6 +11,7 @@ import (
 	"gioui.org/io/system"
 	"gioui.org/layout"
 	"gioui.org/op"
+	"gioui.org/text"
 	"gioui.org/unit"
 	"gioui.org/widget/material"
 )
@@ -41,11 +42,13 @@ func main() {
 	app.Main()
 }
 
+var emojiFont text.FontFace
+
 func draw(w *app.Window) error {
 	// Ops are the operations from the UI.
 	var ops op.Ops
 
-	// th defines the material design theme
+	// th defines the material design theme.
 	th := material.NewTheme(gofont.Collection())
 
 	bar := NewBar(th)

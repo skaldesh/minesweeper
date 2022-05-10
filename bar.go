@@ -61,7 +61,7 @@ func (b *Bar) Layout(gtx C) D {
 						Left: unit.Dp(16),
 					}.Layout(gtx, func(gtx C) D {
 						return layout.Center.Layout(gtx, func(gtx C) D {
-							return material.H4(b.th, "⏲️ "+strconv.FormatUint(uint64(state.SecondsLeft), 10)).Layout(gtx)
+							return material.H4(b.th, "⏲️"+strconv.FormatUint(uint64(state.SecondsLeft), 10)).Layout(gtx)
 						})
 					})
 				}),
@@ -118,7 +118,7 @@ func (b *Bar) Layout(gtx C) D {
 						Right: unit.Dp(16),
 					}.Layout(gtx, func(gtx C) D {
 						return layout.Center.Layout(gtx, func(gtx C) D {
-							return material.H4(b.th, strconv.FormatUint(uint64(state.selectFlagsLeft()), 10)+" 💣").Layout(gtx)
+							return material.H4(b.th, strconv.FormatUint(uint64(state.selectFlagsLeft()), 10)+"💣").Layout(gtx)
 						})
 					})
 				}),

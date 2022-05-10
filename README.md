@@ -16,7 +16,9 @@ The redux pattern is poorly implemented and misses almost everything from the of
 
 ## TODO
 - Add inputs to change grid size, #seconds and #mines.
-- Choose a font that supports emojis.  
+
+## Issues
+- Emojis are not supported due to a [missing feature in gio](https://todo.sr.ht/~eliasnaur/gio/317)
 
 ## License  
 You can do whatever you want.
